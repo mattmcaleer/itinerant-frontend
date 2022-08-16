@@ -1,14 +1,15 @@
-import React from "react";
+import { Component } from "react";
 
-function NavBar() {
-  return (
-    <ul>
-      <li>Add an Itinerary</li>
-      <li>Upcoming Trips</li>
-      <li>Completed Trips</li>
-      <li>Logout</li>
-    </ul>
-  )
+class NavBar extends Component {
+  render() {
+    return (
+      <ul className="navbar">
+        <li className="navLink"><a href="/new">Add a Trip</a></li>
+        <li className="navLink"><a href="/login">Sign In</a></li>
+        <li className="navLink"><a href="/register">Sign Up</a></li>
+      </ul>
+    )
+  }
 }
 
 export default NavBar;

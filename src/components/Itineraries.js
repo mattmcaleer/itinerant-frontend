@@ -1,17 +1,26 @@
-import React from "react";
+import React, { Component } from "react";
+import Itinerary from "./Itinerary";
 
-const Itineraries = props => {
-  const itineraries = props.itineraries.map((itinerary, index) => {
-    return <li key={index}>
-            {itinerary.name}: {itinerary.start_date} - {itinerary.end_date}
-          </li>;
-  });
+class Itineraries extends Component {
 
-  return (
-    <ol>
-      {itineraries}
-    </ol>
-  )
-}
+  render() {
+    const { itineraries, deleteItinerary } = this.props;
+    const ItineraryList = itineraries.map(itinerary => {
+      return (
+        <Itinerary
+            key={itinerary.id}
+            itinerary={itinerary}
+            deleteItinerary={deleteItinerary}
+        />
+      )
+    });
+
+    return(
+      <ul>
+        {ItineraryList}
+      </ul>
+    );
+  }
+};
 
 export default Itineraries;

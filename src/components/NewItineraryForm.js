@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { newItinerary } from "../actions/ItinerariesActions";
 
 class NewItineraryForm extends Component {
 
@@ -28,6 +29,7 @@ class NewItineraryForm extends Component {
   render() {
     return (
       <div>
+        <h1>New Itinerary</h1>
         <form className="new-itinerary-form" onSubmit={(event) => this.handleOnSubmit(event)}>
           <input
             type="text"
@@ -48,7 +50,7 @@ class NewItineraryForm extends Component {
             value={this.state.end_date}
             onChange={(event) => this.handleOnChange(event)} /><br/>
           <input type='submit' />
-        </form>,
+        </form>
       </div>
     )
   }

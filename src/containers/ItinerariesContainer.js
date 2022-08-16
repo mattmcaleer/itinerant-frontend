@@ -9,16 +9,19 @@ class ItinerariesContainer extends Component {
     return (
       <div>
         <NewItineraryForm addItinerary={this.props.addItinerary} />
-        <Itineraries itineraries={this.props.itineraries} />
+        <Itineraries
+          itineraries={this.props.itineraries}
+          deleteItinerary={this.props.deleteItinerary} />
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ itineraries }) => ({ itineraries })
+const mapStateToProps = ( state ) => ({ itineraries: state.itineraries.itineraries })
 
 const mapDispatchToProps = (dispatch) => ({
-  addItinerary: itinerary => dispatch({ type: "ADD_ITINERARY", itinerary})
+  addItinerary: text => dispatch({ type: "ADD_ITINERARY", text}),
+  deleteItinerary: id => dispatch({ type: "DELETE_ITINERARY", id})
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItinerariesContainer)

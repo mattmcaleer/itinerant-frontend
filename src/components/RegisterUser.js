@@ -1,4 +1,5 @@
 import { Component } from "react"
+import {  useDispatch  } from "react-redux";
 
 class RegisterUser extends Component {
   state = {
@@ -14,9 +15,22 @@ class RegisterUser extends Component {
     })
   }
 
+  dispatch = useDispatch();
+
+  handleOnSubmit(event) {
+    event.preventDefault();
+    //this.props.addItinerary(this.state);
+    this.setState({
+      name: '',
+      email: '',
+      password: ''
+    })
+  }
+
+
   render() {
     return (
-      <form>
+      <form onSubmit={(event) => this.handleOnSubmit(event)}>
         <h1>Sign Up</h1><br/>
         <label>Name: </label>
         <input 
