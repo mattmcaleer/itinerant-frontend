@@ -1,7 +1,7 @@
 
 import { LOADING_USER, SIGN_IN_SUCCESS, SIGN_IN_ERRORS, SIGN_IN_FAILURE } from './constantsTest'
 
-const API_URL = 'http://localhost:3000'
+const API_URL = 'http://localhost:5000'
 
 export const signinUser = ({ email, password }) => (dispatch) => {
     dispatch({ type: LOADING_USER })

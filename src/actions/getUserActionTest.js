@@ -1,6 +1,6 @@
 import { LOADING_USER, GET_USER_SUCCESS, GET_USER_ERRORS, GET_USER_FAILURE } from './constantsTest'
 
-const API_URL = 'http://localhost:3000'
+const API_URL = 'http://localhost:5000'
 
 export const getUser = (token) => (dispatch) => {
     dispatch({ type:LOADING_USER })

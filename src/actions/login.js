@@ -1,7 +1,7 @@
 export function login() {
   return (dispatch) => {
     dispatch({ type: "LOGIN" });
-    fetch('http://localhost:3000/users', {
+    fetch('http://localhost:5000/users', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

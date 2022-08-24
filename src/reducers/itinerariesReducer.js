@@ -6,6 +6,7 @@ const itinerariesReducer = (state = { itineraries: [], loading: false }, action)
         itineraries: [...state.itineraries],
         loading: true,
       };
+
     case "ADD_ITINERARIES":
       return {
         ...state,
