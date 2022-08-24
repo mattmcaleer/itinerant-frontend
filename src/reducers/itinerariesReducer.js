@@ -1,22 +1,20 @@
-import cuid from 'cuid';
-export const cuidFn = cuid;
-
-export default function itinerariesReducer(state = {
-  itineraries: [],
-}, action) {
+const itinerariesReducer = (state = { itineraries: [], loading: false }, action) => {
   switch (action.type) {
-
-    case 'ADD_ITINERARY':
-
-      const itinerary = { text: action.text, id: cuid() };
-      return {...state, itineraries: [...state.itineraries, itinerary]}
-
-    case 'DELETE_ITINERARY':
-
-      const itineraries = state.itineraries.filter(itinerary => itinerary.id !== action.id);
-      return { ...state, itineraries}
-
+    case "LOADING_ITINERARIES":
+      return {
+        ...state,
+        itineraries: [...state.itineraries],
+        loading: true,
+      };
+    case "ADD_ITINERARIES":
+      return {
+        ...state,
+        itineraries: action.payload,
+        loading: false,
+      };
     default:
       return state;
   }
 };
+
+export default itinerariesReducer;

@@ -41,7 +41,8 @@ function SigninForm(props) {
     }
 
     return (
-        <div className="signin-form">
+      <div className='container'>
+        <div className='signin-form'>
           <h1>Sign In</h1>
             <form className='form' onSubmit={handleSubmit}>
                 <div className="field">
@@ -55,6 +56,7 @@ function SigninForm(props) {
                 <button className="form-button" type="submit" >Log In</button>
             </form>
         </div>
+      </div>
     );
 }
 

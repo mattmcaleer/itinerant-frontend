@@ -1,27 +1,35 @@
-import { Component } from "react";
-import NewItineraryForm from "../components/NewItineraryForm";
-import { connect } from "react-redux"
-import Itineraries from "../components/Itineraries";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchItineraries } from "../actions/itineraryActions";
+import ItinerariesList from "../components/ItinerariesList";
 
-class ItinerariesContainer extends Component {
+class ItinerariesContainer extends Component {   
+  componentDidMount() {
+    this.props.fetchItineraries();
+  }
 
   render() {
+    console.log(this.props.itineraryPics)
     return (
       <div>
-        <NewItineraryForm addItinerary={this.props.addItinerary} />
-        <Itineraries
-          itineraries={this.props.itineraries}
-          deleteItinerary={this.props.deleteItinerary} />
+        <h1>Itineraries</h1>
+        <ItinerariesList itineraryPics={this.props.itineraryPics} />
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = ( state ) => ({ itineraries: state.itineraries.itineraries })
+const mapStateToProps = (state) => {
+  return {
+    itineraryPics: state.itinerariesReducer.itineraries,
+    loading: state.itinerariesReducer.loading,
+  };
+};
 
-const mapDispatchToProps = (dispatch) => ({
-  addItinerary: text => dispatch({ type: "ADD_ITINERARY", text}),
-  deleteItinerary: id => dispatch({ type: "DELETE_ITINERARY", id})
-})
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchItineraries: () => dispatch(fetchItineraries()),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ItinerariesContainer)
