@@ -13,6 +13,7 @@ import history from './history';
 import ItinerariesContainer from './containers/ItinerariesContainer';
 import ItinerariesList from './components/ItinerariesList';
 import NewItineraryForm from './components/NewItineraryForm';
+import DisplayItinerary from './components/DisplayItinerary';
 
 function App() {
 
@@ -29,7 +30,6 @@ function App() {
     }
   }, []);
 
-
     return (
       
       <div className="App">
@@ -43,7 +43,9 @@ function App() {
               <Route exact path="/register" element={ <SignupTest /> } />
 
               <Route exact path="/new" element={<NewItineraryForm />} />
-              <Route exact path="/itineraries" element={<ItinerariesContainer />} />
+              <Route path="/itineraries/*" element={<ItinerariesContainer />} />
+              
+              
               
             </Routes>
           </BrowserRouter>
@@ -51,9 +53,5 @@ function App() {
       </div>
     );
 }
-
-
-
-//<Route path="/itineraries/:id" element={<Itinerary />} />
 
 export default App;

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchItineraries } from "../actions/itineraryActions";
+import { fetchItineraries } from "../actions/itineraryActions"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import DisplayItinerary from "../components/DisplayItinerary";
 import ItinerariesList from "../components/ItinerariesList";
 
 class ItinerariesContainer extends Component {   
@@ -12,8 +14,11 @@ class ItinerariesContainer extends Component {
     console.log(this.props.itineraryPics)
     return (
       <div>
-        <h1>Itineraries</h1>
-        <ItinerariesList itineraryPics={this.props.itineraryPics} />
+        <Routes>
+          <Route path="" element={ <ItinerariesList itineraryPics={this.props.itineraryPics}/> }/>
+          <Route path=':id' element={ <DisplayItinerary itineraryPics={this.props.itineraryPics }/> }/>
+        </Routes>
+        
       </div>
     );
   }

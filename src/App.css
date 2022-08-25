@@ -41,4 +41,15 @@ body {
   grid-column-start: 3;
   grid-column-end: 5;
   text-align: center;
+  background-color: lightblue;
+  margin: 10px;
+}
+
+.display-itinerary-container {
+  grid-column-start: 3;
+  grid-column-end: 5;
+  text-align: center;
+  background-color: lightblue;
+  margin: 100px;
+  padding: 60px;
 }

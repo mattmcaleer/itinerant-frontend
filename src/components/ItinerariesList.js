@@ -1,26 +1,26 @@
 import React, { Component } from "react"
+import ItineraryListItem from "./ItineraryListItem";
 
 class ItinerariesList extends Component {
 
   listOfItineraries = () => {
     return (
-      this.props.itineraryPics.map(c =>
-        
-        <div key={c.id} className='individual-itinerary'>
-          <ol>
-            <h2>{c.name}</h2>
-            <h3>{c.start_date} - {c.end_date}</h3>
-          </ol>
-        </div>
+      this.props.itineraryPics.map(itin =>
+        <ItineraryListItem key={itin.id} name={itin.name} id={itin.id} start_date={itin.start_date} end_date={itin.end_date} />
       )
     )
   }
   
   render() {
+    console.log(this.props.itineraryPics)
     return (
-      <div className="itinerary-container">
-        {this.listOfItineraries()}
+      <div>
+        <h1>Itineraries</h1><br />
+        <div className="itinerary-container">
+          {this.listOfItineraries()}
+        </div>
       </div>
+
     )
   }
 }
