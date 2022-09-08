@@ -1,16 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
-import { useDispatch } from "react-redux";
-import { createItinerary } from "../actions/itineraryActions";
+import {  useDispatch  } from "react-redux";
+import { createItinerary, updateItinerary } from "../actions/itineraryActions";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-function NewItineraryForm() {
+function EditItineraryForm(props) {
 
   const [name, setName] = useState('');
   const [start_date, setStart_date] = useState('');
   const [end_date, setEnd_date] = useState('');
-  const [places, setPlaces] = useState('');
+  //const [places, setPlaces] = useState([]);
+  const params = useParams();
+  const thisItin = props.itineraryPics.filter(itin => itin.id == params.id)[0]
   const navigate = useNavigate();
 
   const handleNameChange = (e) => {
@@ -25,22 +28,26 @@ function NewItineraryForm() {
     setEnd_date(e.target.value)
   }
 
+  // const handlePlaceChange = (e) => {
+  //   setPlaces(e.target.value)
+  // }
+
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
     const itinerary = {
+        id: thisItin.id,
         name: name.toUpperCase(),
         start_date: start_date,
         end_date: end_date,
-        places: places
+        //places: places
     }
 
     console.log(itinerary)
-    console.log(navigate)
 
-    dispatch(createItinerary(itinerary))
+    dispatch(updateItinerary(itinerary))
             
     setName('')
     setStart_date('')
@@ -53,7 +60,7 @@ function NewItineraryForm() {
   return (
       <div className="container">
         <form className="new-itinerary-form" onSubmit={handleSubmit}>
-        <h1>Add Itinerary</h1><br/>
+        <h1>Update Itinerary</h1><br/>
           <input
             type="text"
             placeholder="Trip Name"
@@ -72,10 +79,16 @@ function NewItineraryForm() {
             name="end_date"
             value={end_date}
             onChange={handleEndDateChange} /><br/>
+          {/* <input
+            type="text"
+            placeholder="Add Place"
+            name="place"
+            value={places}
+            onChange={handlePlaceChange} /><br/> */}
           <input type='submit' />
         </form>
       </div>
   )
 }
 
-export default connect()(NewItineraryForm)
+export default connect()(EditItineraryForm)

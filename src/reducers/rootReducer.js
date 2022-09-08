@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
-import userReducer from "./userReducer";
 import itinerariesReducer from "./itinerariesReducer";
+import placesReducer from "./placesReducer";
+import usersReducer from "./usersReducer";
 
 const rootReducer = combineReducers({
-  userReducer,
-  itinerariesReducer
+  itinerariesReducer,
+  placesReducer,
+  usersReducer
 });
 
 export default rootReducer;
